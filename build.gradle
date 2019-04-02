@@ -12,6 +12,7 @@ buildscript {
     classpath "me.champeau.gradle:jmh-gradle-plugin:0.4.5"
     classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3"
     classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.5.2"
+    classpath "info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.4.0"
   }
 }
 
@@ -44,6 +45,7 @@ apply plugin: "com.github.hierynomus.license"
 apply plugin: "com.jfrog.bintray"
 apply plugin: "com.jfrog.artifactory"
 apply plugin: "eclipse"
+apply plugin: "info.solidsoft.pitest"
 
 sourceCompatibility = JavaVersion.VERSION_1_6
 targetCompatibility = JavaVersion.VERSION_1_6
@@ -372,3 +374,8 @@ if (rootProject.hasProperty("releaseMode")) {
 }
 
 apply from: file("gradle/javadoc_cleanup.gradle")
+
+pitest {
+    targetClasses = ['io.reactivex.internal.util.*']
+    reportDir = 'pitest/reports/'
+}
