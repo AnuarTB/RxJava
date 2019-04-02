@@ -52,4 +52,17 @@ public class OpenHashSetTest {
 
         assertFalse(set.remove(v2));
     }
+
+    // The test to remove the mutation 
+    @Test
+    public void removeSize() {
+        Value v1 = new Value();
+
+        OpenHashSet<Value> set = new OpenHashSet<Value>();
+
+        assertTrue(set.add(v1));
+        int old_size = set.size();
+        assertTrue(set.remove(v1));
+        assertTrue((old_size - 1 == set.size()));
+    }
 }
