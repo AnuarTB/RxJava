@@ -378,4 +378,5 @@ apply from: file("gradle/javadoc_cleanup.gradle")
 pitest {
     targetClasses = ['io.reactivex.internal.util.*']
     reportDir = 'pitest/reports/'
+    outputFormats = ['XML', 'HTML']
 }
